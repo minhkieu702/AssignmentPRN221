@@ -1,18 +1,18 @@
 [
   {
     "OrderId": 9,
-    "CustomerId": 3,
+    "CustomerId": 1,
     "Type": "Direct Payment",
     "TotalAmount": 0,
     "OrderDate": "2024-06-23T00:00:00",
-    "OrderNotes": "e",
+    "OrderNotes": "0",
     "Customer": {
-      "CustomerId": 3,
-      "Phone": "3456789012",
-      "Name": "Michael Johnson",
-      "Address": "789 Oak St",
-      "Email": "michael.johnson@example.com",
-      "DateOfBirth": "1978-08-25T00:00:00"
+      "CustomerId": 1,
+      "Phone": "1234567890",
+      "Name": "John Doe",
+      "Address": "123 Main St",
+      "Email": "john.doe@example.com",
+      "DateOfBirth": "1985-06-15T00:00:00"
     }
   },
   {
@@ -141,6 +141,38 @@
       "Address": "456 Elm St",
       "Email": "jane.smith@example.com",
       "DateOfBirth": "1990-07-20T00:00:00"
+    }
+  },
+  {
+    "OrderId": 17,
+    "CustomerId": 1,
+    "Type": "Direct Payment",
+    "TotalAmount": 1,
+    "OrderDate": "2024-05-31T00:00:00",
+    "OrderNotes": "1",
+    "Customer": {
+      "CustomerId": 1,
+      "Phone": "1234567890",
+      "Name": "John Doe",
+      "Address": "123 Main St",
+      "Email": "john.doe@example.com",
+      "DateOfBirth": "1985-06-15T00:00:00"
+    }
+  },
+  {
+    "OrderId": 18,
+    "CustomerId": 1,
+    "Type": "Direct Payment",
+    "TotalAmount": 1,
+    "OrderDate": "2024-05-31T00:00:00",
+    "OrderNotes": "1",
+    "Customer": {
+      "CustomerId": 1,
+      "Phone": "1234567890",
+      "Name": "John Doe",
+      "Address": "123 Main St",
+      "Email": "john.doe@example.com",
+      "DateOfBirth": "1985-06-15T00:00:00"
     }
   }
 ]

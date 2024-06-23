@@ -157,9 +157,9 @@ namespace Repositories
 
         public void Insert(Order order)
         {
-            var o = orders.FindLast(o => true);
+            int o = orders.Max(o => o.OrderId);
             order.Customer = GetCustomer(order.CustomerId);
-            order.OrderId = o.OrderId + 2;
+            order.OrderId = o + 1;
             orders.Add(order);
         }
 
