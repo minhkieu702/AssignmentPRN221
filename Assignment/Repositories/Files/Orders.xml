@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Order>
+    <OrderId>14</OrderId>
+    <CustomerId>1</CustomerId>
+    <Type>Direct Payment</Type>
+    <TotalAmount>33</TotalAmount>
+    <OrderDate>2024-06-05T00:00:00</OrderDate>
+    <OrderNotes />
+    <Customer>
+      <CustomerId>1</CustomerId>
+      <Phone>1234567890</Phone>
+      <Name>John Doe</Name>
+      <Address>123 Main St</Address>
+      <Email>john.doe@example.com</Email>
+      <DateOfBirth>1985-06-15T00:00:00</DateOfBirth>
+    </Customer>
+  </Order>
+  <Order>
+    <OrderId>2</OrderId>
+    <CustomerId>2</CustomerId>
+    <Type>Direct Payment</Type>
+    <TotalAmount>75</TotalAmount>
+    <OrderDate>2024-05-01T00:00:00</OrderDate>
+    <OrderNotes>There are many variations of passages of Lorem Ipsum available.</OrderNotes>
+    <Customer>
+      <CustomerId>2</CustomerId>
+      <Phone>2345678901</Phone>
+      <Name>Jane Smith</Name>
+      <Address>456 Elm St</Address>
+      <Email>jane.smith@example.com</Email>
+      <DateOfBirth>1990-07-20T00:00:00</DateOfBirth>
+    </Customer>
+  </Order>
+  <Order>
+    <OrderId>3</OrderId>
+    <CustomerId>3</CustomerId>
+    <Type>Direct Payment</Type>
+    <TotalAmount>40</TotalAmount>
+    <OrderDate>2024-05-01T00:00:00</OrderDate>
+    <OrderNotes>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero</OrderNotes>
+    <Customer>
+      <CustomerId>3</CustomerId>
+      <Phone>3456789012</Phone>
+      <Name>Michael Johnson</Name>
+      <Address>789 Oak St</Address>
+      <Email>michael.johnson@example.com</Email>
+      <DateOfBirth>1978-08-25T00:00:00</DateOfBirth>
+    </Customer>
+  </Order>
+  <Order>
+    <OrderId>4</OrderId>
+    <CustomerId>4</CustomerId>
+    <Type>Direct Payment</Type>
+    <TotalAmount>65</TotalAmount>
+    <OrderDate>2024-05-01T00:00:00</OrderDate>
+    <OrderNotes>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</OrderNotes>
+    <Customer>
+      <CustomerId>4</CustomerId>
+      <Phone>4567890123</Phone>
+      <Name>Emily Davis</Name>
+      <Address>101 Pine St</Address>
+      <Email>emily.davis@example.com</Email>
+      <DateOfBirth>1992-09-30T00:00:00</DateOfBirth>
+    </Customer>
+  </Order>
+  <Order>
+    <OrderId>5</OrderId>
+    <CustomerId>5</CustomerId>
+    <Type>Direct Payment</Type>
+    <TotalAmount>50</TotalAmount>
+    <OrderDate>2024-05-01T00:00:00</OrderDate>
+    <OrderNotes>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</OrderNotes>
+    <Customer>
+      <CustomerId>5</CustomerId>
+      <Phone>5678901234</Phone>
+      <Name>Chris Lee</Name>
+      <Address>202 Maple St</Address>
+      <Email>chris.lee@example.com</Email>
+      <DateOfBirth>1983-10-05T00:00:00</DateOfBirth>
+    </Customer>
+  </Order>
+  <Order>
+    <OrderId>6</OrderId>
+    <CustomerId>6</CustomerId>
+    <Type>Direct Payment</Type>
+    <TotalAmount>45</TotalAmount>
+    <OrderDate>2024-05-01T00:00:00</OrderDate>
+    <OrderNotes>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </OrderNotes>
+    <Customer>
+      <CustomerId>6</CustomerId>
+      <Phone>6789012345</Phone>
+      <Name>Sarah Brown</Name>
+      <Address>303 Cedar St</Address>
+      <Email>sarah.brown@example.com</Email>
+      <DateOfBirth>1987-11-10T00:00:00</DateOfBirth>
+    </Customer>
+  </Order>
+  <Order>
+    <OrderId>7</OrderId>
+    <CustomerId>2</CustomerId>
+    <Type>Direct Payment</Type>
+    <TotalAmount>0</TotalAmount>
+    <OrderDate>2024-05-01T00:00:00</OrderDate>
+    <OrderNotes>Contrary to popular belief, Lorem Ipsum is not simply random text</OrderNotes>
+    <Customer>
+      <CustomerId>2</CustomerId>
+      <Phone>2345678901</Phone>
+      <Name>Jane Smith</Name>
+      <Address>456 Elm St</Address>
+      <Email>jane.smith@example.com</Email>
+      <DateOfBirth>1990-07-20T00:00:00</DateOfBirth>
+    </Customer>
+  </Order>
+  <Order>
+    <OrderId>8</OrderId>
+    <CustomerId>3</CustomerId>
+    <Type>Direct Payment</Type>
+    <TotalAmount>0</TotalAmount>
+    <OrderDate>2024-05-01T00:00:00</OrderDate>
+    <OrderNotes>There are many variations of passages of Lorem Ipsum available.</OrderNotes>
+    <Customer>
+      <CustomerId>3</CustomerId>
+      <Phone>3456789012</Phone>
+      <Name>Michael Johnson</Name>
+      <Address>789 Oak St</Address>
+      <Email>michael.johnson@example.com</Email>
+      <DateOfBirth>1978-08-25T00:00:00</DateOfBirth>
+    </Customer>
+  </Order>
+  <Order>
+    <OrderId>9</OrderId>
+    <CustomerId>4</CustomerId>
+    <Type>Direct Payment</Type>
+    <TotalAmount>0</TotalAmount>
+    <OrderDate>2024-05-01T00:00:00</OrderDate>
+    <OrderNotes>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero</OrderNotes>
+    <Customer>
+      <CustomerId>4</CustomerId>
+      <Phone>4567890123</Phone>
+      <Name>Emily Davis</Name>
+      <Address>101 Pine St</Address>
+      <Email>emily.davis@example.com</Email>
+      <DateOfBirth>1992-09-30T00:00:00</DateOfBirth>
+    </Customer>
+  </Order>
+</ArrayOfOrder>
