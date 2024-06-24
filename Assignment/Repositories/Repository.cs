@@ -1,4 +1,5 @@
 ﻿using Data.Models;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,27 @@ namespace Repositories
     public class Repository
 
     {
-        private static string customerJsonFilePath = "D:\\now_semester\\PRN221\\Project_PRN221\\Assignment\\Repositories\\Files\\Customers.json";
-        private static string jsonFilePath= "D:\\now_semester\\PRN221\\Project_PRN221\\Assignment\\Repositories\\Files\\Orders.json";
-        private static string xmlFilePath = "D:\\now_semester\\PRN221\\Project_PRN221\\Assignment\\Repositories\\Files\\Orders.xml";
+        private static string customerJsonFilePath;
+        private static string jsonFilePath;
+        private static string xmlFilePath;
         private static List<Order> orders = new List<Order>();
         private static List<Customer> customers = new List<Customer>();
+        public Repository()
+        {
+            LoadConfiguration();
+        }
+
+        private static void LoadConfiguration()
+        {
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            customerJsonFilePath = configuration["CustomerJsonFilePath"];
+            jsonFilePath = configuration["OrdersJsonFilePath"];
+            xmlFilePath = configuration["OrdersXmlFilePath"];
+        }
         private static void LoadOrdersFromJson()
         {
             try
