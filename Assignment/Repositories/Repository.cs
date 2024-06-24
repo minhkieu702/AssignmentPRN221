@@ -102,6 +102,15 @@ namespace Repositories
             }
             LoadOrdersFromXml();
         }
+        public string LoadTextFile(string f)
+        {
+            string str = File.ReadAllText(xmlFilePath);
+            if (f == "Json")
+            {
+                str = File.ReadAllText(jsonFilePath);
+            }
+            return str;
+        }
         public bool SaveChange(string f)
         {
             string oldString;
@@ -111,12 +120,14 @@ namespace Repositories
                 oldString = File.ReadAllText(jsonFilePath);
                 SaveOrdersToJson();
                 newString = File.ReadAllText(jsonFilePath);
-                return oldString == newString ? false : true;
             }
-            oldString = File.ReadAllText(xmlFilePath);
-            SaveOrdersToXml();
-            newString = File.ReadAllText(xmlFilePath);
-            return oldString == newString ? false : true;
+            else
+            {
+                oldString = File.ReadAllText(xmlFilePath);
+                SaveOrdersToXml();
+                newString = File.ReadAllText(xmlFilePath);
+            }
+            return oldString != newString;
         }
         private static void GetIndex(int id, out int num)
         {
@@ -154,6 +165,71 @@ namespace Repositories
                 return false;
             }
             return true;
+        }
+        public bool SaveFile1(string type, string content)
+        {
+            string oldString;
+            string newString;
+
+            if (type == "Json")
+            {
+                oldString = File.ReadAllText(jsonFilePath);
+                var oldOrder = JsonSerializer.Deserialize<List<Order>>(oldString);
+                string jsonString = JsonSerializer.Serialize(
+                    JsonSerializer.Deserialize<List<Order>>(content),
+                    new JsonSerializerOptions { WriteIndented = true }
+                );
+                File.WriteAllText(jsonFilePath, jsonString);
+                newString = File.ReadAllText(jsonFilePath);
+                var newOrder = JsonSerializer.Deserialize<List<Order>>(newString);
+                return !oldOrder.Equals(newOrder);
+            }
+            else
+            {
+                oldString = File.ReadAllText(xmlFilePath);
+                var oldOrder = DeserializeXmlToOrder(oldString);
+                File.WriteAllText(xmlFilePath, content);
+                newString = File.ReadAllText(xmlFilePath);
+                var newOrder = DeserializeXmlToOrder(newString);
+                return !oldOrder.Equals(newOrder);
+            }
+        }
+
+        public bool SaveFile(string type, string content)
+        {
+            string oldString;
+            string newString;
+            if (type == "Json")
+            {
+                oldString = File.ReadAllText(jsonFilePath);
+
+                string jsonString = JsonSerializer.Serialize(
+                    JsonSerializer.Deserialize<List<Order>>(content)
+                    , new JsonSerializerOptions { WriteIndented = true });
+
+                File.WriteAllText(jsonFilePath, jsonString);
+
+                newString = File.ReadAllText(jsonFilePath);
+            }
+            else
+            {
+                oldString = File.ReadAllText(xmlFilePath);
+
+                File.WriteAllText(xmlFilePath, content);
+
+                newString = File.ReadAllText(xmlFilePath);
+            }
+
+            return newString != oldString;
+        }
+
+        private List<Order> DeserializeXmlToOrder(string xmlContent)
+        {
+            var serializer = new XmlSerializer(typeof(List<Order>));
+            using (StringReader reader = new StringReader(xmlContent))
+            {
+                return (List<Order>)serializer.Deserialize(reader);
+            }
         }
 
         public List<Order> GetAll()

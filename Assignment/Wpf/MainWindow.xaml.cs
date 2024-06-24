@@ -40,6 +40,9 @@ namespace Wpf
             txtType.SelectedIndex = 0;
             _service.ChangeSource(f);
             grdOrder.ItemsSource = _service.GetAllOrders();
+
+            string fileContent = _service.LoadTextFromFile(f);
+            txtJsonXML.Text = fileContent;
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -211,6 +214,18 @@ namespace Wpf
                     MessageBox.Show(ex.Message, "Error");
                 }
             }
+        }
+
+        private void ButtonSaveFile_Click(object sender, RoutedEventArgs e)
+        {
+
+            var check = _service.SaveFile(cboSource.Text, txtJsonXML.Text);
+            if (check)
+            {
+                MessageBox.Show("Successfully");
+            }
+            else MessageBox.Show("Nothing changes!");
+            LoadGrdOrders();
         }
     }
 }

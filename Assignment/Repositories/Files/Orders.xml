@@ -6,7 +6,7 @@
     <Type>Direct Payment</Type>
     <TotalAmount>33</TotalAmount>
     <OrderDate>2024-06-05T00:00:00</OrderDate>
-    <OrderNotes />
+    <OrderNotes>There are many variations of passages of Lorem Ipsum available.</OrderNotes>
     <Customer>
       <CustomerId>1</CustomerId>
       <Phone>1234567890</Phone>

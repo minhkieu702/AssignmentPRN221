@@ -52,33 +52,44 @@
                     </ComboBox>
                 </Grid>
             </GroupBox>
-            <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment=
-                    "Right">
+            <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Label Content="Search Note" Margin="5, 5, 10, 5"/>
                 <TextBox TextWrapping="Wrap" x:Name="txtKey" Width="400" Margin="0, 5, 40, 5" TextChanged="TextBox_TextChanged"/>
                 <Button x:Name="ButtonRefresh" Content="Refresh" Height="30" Width="80" Click="ButtonRefresh_Click"/>
                 <Button x:Name="ButtonSave" Content="Save" Height="30" Width="80" Click="ButtonSave_Click"/>
                 <Button x:Name="ButtonCancel" Content="Cancel" Height="30" Width="80" Click="ButtonCancel_Click"/>
             </StackPanel>
-            <StackPanel Height="210">
-                <DataGrid x:Name="grdOrder" AutoGenerateColumns="False" ItemsSource="{Binding Orders}" CanUserAddRows="False" Height="200" Margin="10" MouseDoubleClick="grdOrder_MouseDoubleClick" SelectionMode="Single" SelectionUnit="FullRow">
+            <Grid Height="210">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid Grid.Column="0" x:Name="grdOrder" AutoGenerateColumns="False" ItemsSource="{Binding Orders}" CanUserAddRows="False" Height="200" Margin="10" MouseDoubleClick="grdOrder_MouseDoubleClick" SelectionMode="Single" SelectionUnit="FullRow">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Code" Binding="{Binding Path=OrderId}" Visibility="Hidden" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="CustomerId" Binding="{Binding Path=Customer.Name}" Width="180"  IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}" Width="180"  IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Note" Binding="{Binding Path=OrderNotes}" Width="180"  IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Order Date" Binding="{Binding Path=OrderDate}" Width="180" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Total Amount" Binding="{Binding Path=TotalAmount}" Width="180"  IsReadOnly="True"/>
-                        <DataGridTemplateColumn Width="50">
+                        <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Content="X" x:Name="ButtonDelete" CommandParameter="{Binding Path=OrderId}" Click="ButtonDelete_Click"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Code" Binding="{Binding Path=OrderId}" Visibility="Hidden" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Customer" Binding="{Binding Path=Customer.Name}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Note" Binding="{Binding Path=OrderNotes}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Order Date" Binding="{Binding Path=OrderDate}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Total Amount" Binding="{Binding Path=TotalAmount}" IsReadOnly="True"/>
                     </DataGrid.Columns>
                 </DataGrid>
-            </StackPanel>
+                <Grid Grid.Column="1" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="ButtonSaveFile" Content="Save File" Height="30" Click="ButtonSaveFile_Click"/>
+                    <TextBox Grid.Row="1" x:Name="txtJsonXML" Height="210" TextWrapping="WrapWithOverflow"/>
+                </Grid>
+            </Grid>
         </StackPanel>
         <ComboBox HorizontalAlignment="Left" Height="0" Margin="722,526,0,0" VerticalAlignment="Top" Width="120"/>
     </Grid>

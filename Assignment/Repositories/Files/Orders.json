@@ -5,7 +5,7 @@
     "Type": "Direct Payment",
     "TotalAmount": 0,
     "OrderDate": "2024-06-23T00:00:00",
-    "OrderNotes": "1",
+    "OrderNotes": "jiji",
     "Customer": {
       "CustomerId": 1,
       "Phone": "1234567890",

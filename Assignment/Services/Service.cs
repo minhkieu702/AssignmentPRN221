@@ -16,5 +16,7 @@ namespace Services
         public void ChangeSource(string f) => _repo.ChangeSource(f);
         public Customer GetCustomer(int id) => _repo.GetCustomer(id);
         public List<Customer> GetAllCustomers() => _repo.GetCustomers();
+        public string LoadTextFromFile(string f) => _repo.LoadTextFile(f);
+        public bool SaveFile(string type, string content) => _repo.SaveFile(type, content);
     }
 }
