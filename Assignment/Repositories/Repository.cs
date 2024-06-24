@@ -166,35 +166,7 @@ namespace Repositories
             }
             return true;
         }
-        public bool SaveFile1(string type, string content)
-        {
-            string oldString;
-            string newString;
-
-            if (type == "Json")
-            {
-                oldString = File.ReadAllText(jsonFilePath);
-                var oldOrder = JsonSerializer.Deserialize<List<Order>>(oldString);
-                string jsonString = JsonSerializer.Serialize(
-                    JsonSerializer.Deserialize<List<Order>>(content),
-                    new JsonSerializerOptions { WriteIndented = true }
-                );
-                File.WriteAllText(jsonFilePath, jsonString);
-                newString = File.ReadAllText(jsonFilePath);
-                var newOrder = JsonSerializer.Deserialize<List<Order>>(newString);
-                return !oldOrder.Equals(newOrder);
-            }
-            else
-            {
-                oldString = File.ReadAllText(xmlFilePath);
-                var oldOrder = DeserializeXmlToOrder(oldString);
-                File.WriteAllText(xmlFilePath, content);
-                newString = File.ReadAllText(xmlFilePath);
-                var newOrder = DeserializeXmlToOrder(newString);
-                return !oldOrder.Equals(newOrder);
-            }
-        }
-
+        
         public bool SaveFile(string type, string content)
         {
             string oldString;
