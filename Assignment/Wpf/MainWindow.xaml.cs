@@ -39,7 +39,7 @@ namespace Wpf
             }
             txtType.SelectedIndex = 0;
             _service.ChangeSource(f);
-            grdOrder.ItemsSource = _service.GetAll();
+            grdOrder.ItemsSource = _service.GetAllOrders();
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -57,7 +57,7 @@ namespace Wpf
                 {
                     MessageBox.Show("Successfully");
                 }
-                else MessageBox.Show("Failed");
+                else MessageBox.Show("Nothing changes!");
                 LoadGrdOrders();
             }
             catch (Exception ex)
@@ -72,7 +72,7 @@ namespace Wpf
                 var result = _service.GetCustomer(int.Parse(txtCustomerId.Text));
                 if (result == null)
                 {
-                    throw new Exception("Not Found");
+                    throw new Exception("This customer Id is not found");
                 }
                 return new Order
                 {
@@ -102,7 +102,7 @@ namespace Wpf
             txtDate.Text = DateTime.Now.ToString();
             txtKey.Text = string.Empty;
             txtNote.Text = string.Empty;
-            txtOrderId.Text = _service.GetAll().Count().ToString();
+            txtOrderId.Text = _service.GetAllOrders().Count().ToString();
             lbCustomerInfo.Content = string.Empty;
             txtTotalAmount.Text = string.Empty;
         }
@@ -201,7 +201,7 @@ namespace Wpf
                             {
                                 MessageBox.Show("Successfully");
                             }
-                            else MessageBox.Show("Failed");
+                            else MessageBox.Show("Nothing changes!");
                             this.LoadGrdOrders();
                         }
                     }

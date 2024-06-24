@@ -1,0 +1,61 @@
+﻿@model SignalROrder.Models.OrderWithCustomer
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Order.OrderId" />
+            <div class="form-group">
+                <label asp-for="Order.CustomerId" class="control-label"></label>
+                <select asp-for="Order.CustomerId" class="form-control">
+                    @foreach (var item in Model.Customers)
+                    {
+                        <option value=@item.CustomerId>@item.Name - @item.Email - @item.Address</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.Type" class="control-label"></label>
+                <select asp-for="Order.Type" class="form-control">
+                    <option value="Direct Payment">Direct Payment</option>
+                    <option value="Online Payment">Online Payment</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.OrderNotes" class="control-label"></label>
+                <input asp-for="Order.OrderNotes" class="form-control" />
+                <span asp-validation-for="Order.OrderNotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.OrderDate" class="control-label"></label>
+                <input asp-for="Order.OrderDate" class="form-control" type="datetime" />
+                <span asp-validation-for="Order.OrderDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order.TotalAmount" class="control-label"></label>
+                <input asp-for="Order.TotalAmount" class="form-control" />
+                <span asp-validation-for="Order.TotalAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

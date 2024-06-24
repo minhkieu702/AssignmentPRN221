@@ -6,7 +6,7 @@ namespace Services
     public class Service
     {
         Repository _repo = new();
-        public List<Order> GetAll() => _repo.GetAll();
+        public List<Order> GetAllOrders() => _repo.GetAll();
         public List<Order> Search(string searchStr) => _repo.GetBySearching(searchStr);
         public void Update(Order order) => _repo.Update(order);
         public void Insert(Order order) => _repo.Insert(order);
@@ -15,5 +15,6 @@ namespace Services
         public bool SaveChange(string f) => _repo.SaveChange(f);
         public void ChangeSource(string f) => _repo.ChangeSource(f);
         public Customer GetCustomer(int id) => _repo.GetCustomer(id);
+        public List<Customer> GetAllCustomers() => _repo.GetCustomers();
     }
 }

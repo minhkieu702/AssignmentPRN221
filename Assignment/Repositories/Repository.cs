@@ -12,19 +12,19 @@ namespace Repositories
     public class Repository
 
     {
-        private static string jsonFilePath = "../../../../Repositories/Files/Orders.json";
-        private static string customerJsonFilePath = "../../../../Repositories/Files/Customers.json";
-        private static string xmlFilePath = "../../../../Repositories/Files/Orders.xml";
+        private static string customerJsonFilePath = "D:\\now_semester\\PRN221\\Project_PRN221\\Assignment\\Repositories\\Files\\Customers.json";
+        private static string jsonFilePath= "D:\\now_semester\\PRN221\\Project_PRN221\\Assignment\\Repositories\\Files\\Orders.json";
+        private static string xmlFilePath = "D:\\now_semester\\PRN221\\Project_PRN221\\Assignment\\Repositories\\Files\\Orders.xml";
         private static List<Order> orders = new List<Order>();
         private static List<Customer> customers = new List<Customer>();
         private static void LoadOrdersFromJson()
         {
             try
             {
+                orders = new();
                 string jsonString = File.ReadAllText(jsonFilePath);
-
                 orders = JsonSerializer.Deserialize<List<Order>>(jsonString);
-
+                LoadCustomerFromFile();
             }
             catch (Exception)
             {
@@ -33,18 +33,24 @@ namespace Repositories
         }
         public Customer GetCustomer(int id)
         {
+            return customers.FirstOrDefault(c => c.CustomerId == id);
+        }
+        private static void LoadCustomerFromFile()
+        {
             try
             {
                 string jsonString = File.ReadAllText(customerJsonFilePath);
 
                 customers = JsonSerializer.Deserialize<List<Customer>>(jsonString);
-
-                return customers.FirstOrDefault(c => c.CustomerId == id);
             }
             catch (Exception)
             {
                 throw;
             }
+        }
+        public List<Customer> GetCustomers()
+        {
+            return customers;
         }
         private static void LoadOrdersFromXml()
         {
@@ -55,6 +61,7 @@ namespace Repositories
                 var xs = new XmlSerializer(typeof(List<Order>));
                 orders = (List<Order>)xs.Deserialize(s1);
                 s1.Close();
+                LoadCustomerFromFile();
             }
             catch (FileNotFoundException e)
             {
