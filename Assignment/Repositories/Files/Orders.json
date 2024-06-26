@@ -1,21 +1,5 @@
 [
   {
-    "OrderId": 9,
-    "CustomerId": 1,
-    "Type": "Direct Payment",
-    "TotalAmount": 0,
-    "OrderDate": "2024-06-23T00:00:00",
-    "OrderNotes": "jiji",
-    "Customer": {
-      "CustomerId": 1,
-      "Phone": "1234567890",
-      "Name": "John Doe",
-      "Address": "123 Main St",
-      "Email": "john.doe@example.com",
-      "DateOfBirth": "1985-06-15T00:00:00"
-    }
-  },
-  {
     "OrderId": 5,
     "CustomerId": 5,
     "Type": "Direct Payment",
@@ -179,57 +163,9 @@
     "OrderId": 19,
     "CustomerId": 1,
     "Type": "Direct Payment",
-    "TotalAmount": 0,
-    "OrderDate": "0001-01-01T00:00:00",
-    "OrderNotes": "",
-    "Customer": {
-      "CustomerId": 1,
-      "Phone": "1234567890",
-      "Name": "John Doe",
-      "Address": "123 Main St",
-      "Email": "john.doe@example.com",
-      "DateOfBirth": "1985-06-15T00:00:00"
-    }
-  },
-  {
-    "OrderId": 20,
-    "CustomerId": 1,
-    "Type": "Direct Payment",
-    "TotalAmount": 0.4,
-    "OrderDate": "0001-01-01T00:00:00",
-    "OrderNotes": "",
-    "Customer": {
-      "CustomerId": 1,
-      "Phone": "1234567890",
-      "Name": "John Doe",
-      "Address": "123 Main St",
-      "Email": "john.doe@example.com",
-      "DateOfBirth": "1985-06-15T00:00:00"
-    }
-  },
-  {
-    "OrderId": 21,
-    "CustomerId": 1,
-    "Type": "Direct Payment",
-    "TotalAmount": 0,
-    "OrderDate": "0001-01-01T00:00:00",
-    "OrderNotes": "",
-    "Customer": {
-      "CustomerId": 1,
-      "Phone": "1234567890",
-      "Name": "John Doe",
-      "Address": "123 Main St",
-      "Email": "john.doe@example.com",
-      "DateOfBirth": "1985-06-15T00:00:00"
-    }
-  },
-  {
-    "OrderId": 22,
-    "CustomerId": 1,
-    "Type": "Direct Payment",
-    "TotalAmount": 0,
-    "OrderDate": "2024-06-24T00:00:00",
-    "OrderNotes": "",
+    "TotalAmount": 5,
+    "OrderDate": "2024-06-22T00:00:00",
+    "OrderNotes": "ggg",
     "Customer": {
       "CustomerId": 1,
       "Phone": "1234567890",

@@ -80,17 +80,9 @@ namespace Repositories
                 s1.Close();
                 LoadCustomerFromFile();
             }
-            catch (FileNotFoundException e)
+            catch (Exception)
             {
-                Console.WriteLine($"The file '{xmlFilePath}' was not found: {e.Message}");
-            }
-            catch (InvalidOperationException e)
-            {
-                Console.WriteLine($"There was an error deserializing the XML data: {e.Message}");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"An error occurred: {e.Message}");
+                throw;
             }
         }
         public void ChangeSource(string f)

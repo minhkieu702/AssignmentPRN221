@@ -1,6 +1,7 @@
 ﻿using Data.Models;
 using Services;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -101,6 +102,11 @@ namespace Wpf
 
         private void ButtonRefresh_Click(object sender, RoutedEventArgs e)
         {
+            RefreshAllField();
+        }
+
+        private void RefreshAllField()
+        {
             txtCustomerId.Text = string.Empty;
             txtDate.Text = DateTime.Now.ToString();
             txtKey.Text = string.Empty;
@@ -112,6 +118,7 @@ namespace Wpf
 
         private void cboSource_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            RefreshAllField();
             LoadGrdOrders();
         }
 
@@ -174,7 +181,11 @@ namespace Wpf
             {
                 return;
             }
-            var result = _service.GetCustomer(int.Parse(s));
+            if (!int.TryParse(s, out int customerid))
+            {
+                s = "0";
+            }
+            var result = _service.GetCustomer(customerid);
             if (result == null)
             {
                 lbCustomerInfo.Content = "Not Found";
@@ -218,7 +229,7 @@ namespace Wpf
 
         private void ButtonSaveFile_Click(object sender, RoutedEventArgs e)
         {
-
+            RefreshAllField();
             var check = _service.SaveFile(cboSource.Text, txtJsonXML.Text);
             if (check)
             {

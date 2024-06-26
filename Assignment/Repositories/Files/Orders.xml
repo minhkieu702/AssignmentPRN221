@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Order>
-    <OrderId>14</OrderId>
-    <CustomerId>1</CustomerId>
+    <OrderId>12</OrderId>
+    <CustomerId>2</CustomerId>
     <Type>Direct Payment</Type>
-    <TotalAmount>33</TotalAmount>
-    <OrderDate>2024-06-05T00:00:00</OrderDate>
-    <OrderNotes>There are many variations of passages of Lorem Ipsum available.</OrderNotes>
+    <TotalAmount>5</TotalAmount>
+    <OrderDate>2024-06-26T00:00:00</OrderDate>
+    <OrderNotes>33333</OrderNotes>
     <Customer>
-      <CustomerId>1</CustomerId>
-      <Phone>1234567890</Phone>
-      <Name>John Doe</Name>
-      <Address>123 Main St</Address>
-      <Email>john.doe@example.com</Email>
-      <DateOfBirth>1985-06-15T00:00:00</DateOfBirth>
+      <CustomerId>2</CustomerId>
+      <Phone>2345678901</Phone>
+      <Name>Jane Smith</Name>
+      <Address>456 Elm St</Address>
+      <Email>jane.smith@example.com</Email>
+      <DateOfBirth>1990-07-20T00:00:00</DateOfBirth>
     </Customer>
   </Order>
   <Order>
@@ -163,10 +163,10 @@
   <Order>
     <OrderId>16</OrderId>
     <CustomerId>1</CustomerId>
-    <Type>Direct Payment</Type>
+    <Type>Online Payment</Type>
     <TotalAmount>1</TotalAmount>
     <OrderDate>2024-05-31T00:00:00</OrderDate>
-    <OrderNotes>1</OrderNotes>
+    <OrderNotes>1fwifwfhwiowfw</OrderNotes>
     <Customer>
       <CustomerId>1</CustomerId>
       <Phone>1234567890</Phone>
@@ -180,25 +180,9 @@
     <OrderId>17</OrderId>
     <CustomerId>1</CustomerId>
     <Type>Direct Payment</Type>
-    <TotalAmount>1</TotalAmount>
-    <OrderDate>2024-05-31T00:00:00</OrderDate>
-    <OrderNotes>1</OrderNotes>
-    <Customer>
-      <CustomerId>1</CustomerId>
-      <Phone>1234567890</Phone>
-      <Name>John Doe</Name>
-      <Address>123 Main St</Address>
-      <Email>john.doe@example.com</Email>
-      <DateOfBirth>1985-06-15T00:00:00</DateOfBirth>
-    </Customer>
-  </Order>
-  <Order>
-    <OrderId>18</OrderId>
-    <CustomerId>1</CustomerId>
-    <Type>Direct Payment</Type>
-    <TotalAmount>1</TotalAmount>
-    <OrderDate>2024-05-31T00:00:00</OrderDate>
-    <OrderNotes>1</OrderNotes>
+    <TotalAmount>5</TotalAmount>
+    <OrderDate>2024-06-22T00:00:00</OrderDate>
+    <OrderNotes>ggg</OrderNotes>
     <Customer>
       <CustomerId>1</CustomerId>
       <Phone>1234567890</Phone>

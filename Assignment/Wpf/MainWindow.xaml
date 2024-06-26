@@ -59,12 +59,12 @@
                 <Button x:Name="ButtonSave" Content="Save" Height="30" Width="80" Click="ButtonSave_Click"/>
                 <Button x:Name="ButtonCancel" Content="Cancel" Height="30" Width="80" Click="ButtonCancel_Click"/>
             </StackPanel>
-            <Grid Height="210">
+            <Grid Height="500">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <DataGrid Grid.Column="0" x:Name="grdOrder" AutoGenerateColumns="False" ItemsSource="{Binding Orders}" CanUserAddRows="False" Height="200" Margin="10" MouseDoubleClick="grdOrder_MouseDoubleClick" SelectionMode="Single" SelectionUnit="FullRow">
+                <DataGrid Grid.Column="0" x:Name="grdOrder" AutoGenerateColumns="False" ItemsSource="{Binding Orders}" CanUserAddRows="False" Height="500" Margin="10" MouseDoubleClick="grdOrder_MouseDoubleClick" SelectionMode="Single" SelectionUnit="FullRow">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>
@@ -87,7 +87,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Button x:Name="ButtonSaveFile" Content="Save File" Height="30" Click="ButtonSaveFile_Click"/>
-                    <TextBox Grid.Row="1" x:Name="txtJsonXML" Height="210" TextWrapping="WrapWithOverflow"/>
+                    <TextBox Grid.Row="1" x:Name="txtJsonXML" Height="500" TextWrapping="WrapWithOverflow"/>
                 </Grid>
             </Grid>
         </StackPanel>
