@@ -1,6 +1,102 @@
-Worker running at: 7/14/2024 6:19:55 PM +07:00
+Worker running at: 7/14/2024 6:56:53 PM +07:00
 Delete Order List: 0
-Existing Order List: 7
-Worker running at: 7/14/2024 6:20:00 PM +07:00
+Existing Order List: 5
+Worker running at: 7/14/2024 7:14:18 PM +07:00
 Delete Order List: 0
-Existing Order List: 7
+Existing Order List: 5
+Worker running at: 7/14/2024 7:29:55 PM +07:00
+Delete Order List: 6
+Existing Order List: 5
+Worker running at: 7/14/2024 7:31:07 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:31:51 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:34:35 PM +07:00
+Delete Order List: 6
+Existing Order List: 5
+Worker running at: 7/14/2024 7:36:12 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:36:22 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:37:57 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:38:02 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:38:07 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:38:12 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:38:17 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:38:22 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:38:27 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:38:32 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:38:37 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:38:42 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:38:47 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:38:52 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:38:57 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:39:02 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:39:07 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:39:12 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:39:17 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:39:22 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:39:27 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:39:32 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:39:37 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:39:42 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:39:47 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:39:52 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:39:57 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
+Worker running at: 7/14/2024 7:40:02 PM +07:00
+Delete Order List: 0
+Existing Order List: 5
