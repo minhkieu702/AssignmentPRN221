@@ -1,5 +1,8 @@
 ﻿using Data.Models;
+using Microsoft.Extensions.Configuration;
 using Services;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -19,15 +22,19 @@ namespace Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        private HttpListener _httpListener;
+        private Thread _thread;
         private Service _service;
 
         public MainWindow()
         {
             _service ??= new();
             InitializeComponent();
+            StartHttpListener();
             LoadGrdOrders();
         }
 
+        #region CRUD
         private void LoadGrdOrders()
         {
             var selectedComboBoxItem = cboSource.SelectedItem as ComboBoxItem;
@@ -38,6 +45,7 @@ namespace Wpf
                 cboSource.SelectedIndex = 0;
                 f = "Json";
             }
+            txtDate.Text = DateTime.Now.ToString();
             txtType.SelectedIndex = 0;
             _service.ChangeSource(f);
             grdOrder.ItemsSource = _service.GetAllOrders();
@@ -97,6 +105,16 @@ namespace Wpf
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
+            // Wait for the listener thread to finish
+            if (_thread != null)
+            {
+                _thread.Join();
+            }
+
+            if (_httpListener != null)
+            {
+                _httpListener.Stop();
+            }
             Close();
         }
 
@@ -238,5 +256,115 @@ namespace Wpf
             else MessageBox.Show("Nothing changes!");
             LoadGrdOrders();
         }
+        #endregion
+
+        #region Payment
+        private void StartHttpListener()
+        {
+            _httpListener = new HttpListener();
+            _httpListener.Prefixes.Add("http://localhost:8080/vnpay_return/");
+            _httpListener.Start();
+            _thread = new Thread(new ThreadStart(HandleHttpRequests));
+            _thread.Start();
+        }
+
+        private void HandleHttpRequests()
+        {
+            try
+            {
+                while (_httpListener.IsListening)
+                {
+                    var context = _httpListener.GetContext();
+                    var response = context.Response;
+                    var request = context.Request;
+
+                    if (request.HttpMethod == "GET")
+                    {
+                        var queryParams = request.QueryString;
+                        string responseString = "<html><body>Payment status received</body></html>";
+                        byte[] buffer = Encoding.UTF8.GetBytes(responseString);
+                        response.ContentLength64 = buffer.Length;
+                        var responseOutput = response.OutputStream;
+                        responseOutput.Write(buffer, 0, buffer.Length);
+                        response.Close();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public string CreatePaymentUrl(Order model)
+        {
+            try
+            {
+                var tick = DateTime.Now.Ticks.ToString();
+                var vnpay = new VnPayLibrary();
+                vnpay.AddRequestData("vnp_Version", "2.1.0");
+                vnpay.AddRequestData("vnp_Command", "Pay");
+                vnpay.AddRequestData("vnp_TmnCode", "NJJ0R8FS");
+                vnpay.AddRequestData("vnp_Amount", (model.TotalAmount * 100).ToString());
+                vnpay.AddRequestData("vnp_CreateDate", DateTime.Now.ToString("yyyyMMddHHmmss"));
+                vnpay.AddRequestData("vnp_CurrCode", "VND");
+                vnpay.AddRequestData("vnp_IpAddr", Utils.GetIpAddress());
+                vnpay.AddRequestData("vnp_Locale", "vn");
+                vnpay.AddRequestData("vnp_OrderInfo", "Pay Order:" + model.OrderId);
+                vnpay.AddRequestData("vnp_OrderType", "other"); // default value: other
+                vnpay.AddRequestData("vnp_ReturnUrl", "http://localhost:8080/vnpay_return/");
+                vnpay.AddRequestData("vnp_TxnRef", tick);
+
+                var paymentUrl = vnpay.CreateRequestUrl("https://sandbox.vnpayment.vn/paymentv2/vpcpay.html", "BYKJBHPPZKQMKBIBGGXIYKWYFAYSJXCW");
+                return paymentUrl;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+        private void ButtonPay_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Button btn = (Button)sender;
+                string orderCode = btn.CommandParameter.ToString();
+
+                if (int.TryParse(orderCode, out int orderId))
+                {
+                    var order = _service.GetById(orderId);
+                    if (order != null)
+                    {
+                        string vnpUrl = CreatePaymentUrl(order);
+                        var paymentWindow = new wPayment(vnpUrl);
+                        paymentWindow.Show();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+        }
+
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            // Stop the HttpListener
+            if (_httpListener != null)
+            {
+                _httpListener.Stop();
+            }
+
+            // Wait for the listener thread to finish
+            if (_thread != null)
+            {
+                _thread.Join();
+            }
+
+            base.OnClosing(e);
+        }
+        #endregion
     }
 }

@@ -20,7 +20,7 @@ namespace Data.Models
         public DateTime OrderDate { get; set; }
 
         public string? OrderNotes { get; set; }
-
+        public bool? Delete { get; set; }
         public virtual Customer Customer { get; set; } = null!;
     }
 }

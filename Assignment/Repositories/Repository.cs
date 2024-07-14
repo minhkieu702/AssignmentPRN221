@@ -161,30 +161,37 @@ namespace Repositories
         
         public bool SaveFile(string type, string content)
         {
-            string oldString;
-            string newString;
-            if (type == "Json")
+            try
             {
-                oldString = File.ReadAllText(jsonFilePath);
+                string oldString;
+                string newString;
+                if (type == "Json")
+                {
+                    oldString = File.ReadAllText(jsonFilePath);
 
-                string jsonString = JsonSerializer.Serialize(
-                    JsonSerializer.Deserialize<List<Order>>(content)
-                    , new JsonSerializerOptions { WriteIndented = true });
+                    string jsonString = JsonSerializer.Serialize(
+                        JsonSerializer.Deserialize<List<Order>>(content)
+                        , new JsonSerializerOptions { WriteIndented = true });
 
-                File.WriteAllText(jsonFilePath, jsonString);
+                    File.WriteAllText(jsonFilePath, jsonString);
 
-                newString = File.ReadAllText(jsonFilePath);
+                    newString = File.ReadAllText(jsonFilePath);
+                }
+                else
+                {
+                    oldString = File.ReadAllText(xmlFilePath);
+
+                    File.WriteAllText(xmlFilePath, content);
+
+                    newString = File.ReadAllText(xmlFilePath);
+                }
+
+                return newString != oldString;
             }
-            else
+            catch (Exception ex)
             {
-                oldString = File.ReadAllText(xmlFilePath);
-
-                File.WriteAllText(xmlFilePath, content);
-
-                newString = File.ReadAllText(xmlFilePath);
+                throw new Exception(ex.Message);
             }
-
-            return newString != oldString;
         }
 
         private List<Order> DeserializeXmlToOrder(string xmlContent)
