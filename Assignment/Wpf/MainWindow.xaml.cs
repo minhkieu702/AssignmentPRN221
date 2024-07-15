@@ -1,6 +1,7 @@
 ﻿using Data.Models;
 using Microsoft.Extensions.Configuration;
 using Services;
+using System.Collections.Specialized;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -132,6 +133,7 @@ namespace Wpf
             txtOrderId.Text = _service.GetAllOrders().Count().ToString();
             lbCustomerInfo.Content = string.Empty;
             txtTotalAmount.Text = string.Empty;
+            LoadGrdOrders();
         }
 
         private void cboSource_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -281,12 +283,14 @@ namespace Wpf
                     if (request.HttpMethod == "GET")
                     {
                         var queryParams = request.QueryString;
-                        string responseString = "<html><body>Payment status received</body></html>";
+                        var isSuccess = UpdateOrder(queryParams);
+                        string responseString = $"<html><body>Payment status received: {isSuccess}</body></html>";
                         byte[] buffer = Encoding.UTF8.GetBytes(responseString);
                         response.ContentLength64 = buffer.Length;
                         var responseOutput = response.OutputStream;
                         responseOutput.Write(buffer, 0, buffer.Length);
                         response.Close();
+                        LoadGrdOrders();
                     }
                 }
             }
@@ -295,6 +299,38 @@ namespace Wpf
 
                 throw;
             }
+        }
+        public DateTime ConvertStringToDateTime(string dateTimeString)
+        {
+            if (DateTime.TryParseExact(dateTimeString, "yyyyMMddHHmmss", null, System.Globalization.DateTimeStyles.None, out DateTime result))
+            {
+                return result;
+            }
+            else
+            {
+                throw new FormatException("The provided string is not in the correct format.");
+            }
+        }
+
+        private string UpdateOrder(NameValueCollection queryParams)
+        {
+            var resoponseCode = queryParams.GetValues("vnp_ResponseCode");
+            if (resoponseCode[0].Equals("00"))
+            {
+                var orderInfo = queryParams.GetValues("vnp_OrderInfo")[0];
+                var orderId = orderInfo.Substring(orderInfo.IndexOf(":") + 1);
+                var order = _service.GetById(int.Parse(orderId));
+                var amount = queryParams.GetValues("vnp_Amount")[0];
+                var payDate = queryParams.GetValues("vnp_PayDate")[0];
+                order.OrderNotes = orderId + " is paid to " + amount + " at " + ConvertStringToDateTime(payDate);
+                _service.Update(order);
+                var check = _service.SaveChange("Json");
+                if (check)
+                {
+                    return "Payment is successfully";
+                }
+            }
+            return "Payment failed";
         }
 
         public string CreatePaymentUrl(Order model)

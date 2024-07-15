@@ -126,7 +126,11 @@ namespace Repositories
             num = 0;
             foreach (var o in orders)
             {
-                if (o.OrderId == id) num = orders.IndexOf(o);
+                if (o.OrderId == id)
+                {
+                    num = orders.IndexOf(o);
+                    return;
+                }
             }
         }
         private static void SaveOrdersToXml()
