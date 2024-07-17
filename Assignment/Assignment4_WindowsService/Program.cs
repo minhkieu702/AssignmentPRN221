@@ -9,3 +9,10 @@ var builder = Host.CreateDefaultBuilder(args)
 
 var host = builder.Build();
 host.Run();
+
+/*
+ dotnet publish -o .\publish -c Release -p:PublishSingleFile=true
+
+sc create "AAAAAA" BinPath="Path\To\publish\Assignment4_WindowsService.exe"
+ 
+ */

@@ -3,10 +3,10 @@
     "OrderId": 5,
     "CustomerId": 5,
     "Type": "Direct Payment",
-    "TotalAmount": 50000000,
+    "TotalAmount": 50,
     "OrderDate": "2024-05-01T00:00:00",
-    "OrderNotes": "5 is paid to 5000000000 at 20240715191455",
-    "Delete": null,
+    "OrderNotes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+    "Delete": true,
     "Customer": {
       "CustomerId": 5,
       "Phone": "5678901234",
@@ -20,10 +20,10 @@
     "OrderId": 6,
     "CustomerId": 6,
     "Type": "Direct Payment",
-    "TotalAmount": 450000,
+    "TotalAmount": 45,
     "OrderDate": "2024-05-01T00:00:00",
-    "OrderNotes": "6 is paid to 45000000 at 7/15/2024 7:21:48 PM",
-    "Delete": null,
+    "OrderNotes": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "Delete": true,
     "Customer": {
       "CustomerId": 6,
       "Phone": "6789012345",
@@ -159,23 +159,6 @@
     "TotalAmount": 1,
     "OrderDate": "2024-05-31T00:00:00",
     "OrderNotes": "1",
-    "Delete": false,
-    "Customer": {
-      "CustomerId": 1,
-      "Phone": "1234567890",
-      "Name": "John Doe",
-      "Address": "123 Main St",
-      "Email": "john.doe@example.com",
-      "DateOfBirth": "1985-06-15T00:00:00"
-    }
-  },
-  {
-    "OrderId": 19,
-    "CustomerId": 1,
-    "Type": "Direct Payment",
-    "TotalAmount": 5,
-    "OrderDate": "2024-06-22T00:00:00",
-    "OrderNotes": "ggg",
     "Delete": false,
     "Customer": {
       "CustomerId": 1,

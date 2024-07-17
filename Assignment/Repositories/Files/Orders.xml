@@ -2,18 +2,19 @@
 <ArrayOfOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Order>
     <OrderId>12</OrderId>
-    <CustomerId>2</CustomerId>
+    <CustomerId>3</CustomerId>
     <Type>Direct Payment</Type>
-    <TotalAmount>5</TotalAmount>
-    <OrderDate>2024-06-26T00:00:00</OrderDate>
-    <OrderNotes>33333</OrderNotes>
+    <TotalAmount>888</TotalAmount>
+    <OrderDate>2024-07-17T00:00:00</OrderDate>
+    <OrderNotes>something</OrderNotes>
+    <Delete xsi:nil="true" />
     <Customer>
-      <CustomerId>2</CustomerId>
-      <Phone>2345678901</Phone>
-      <Name>Jane Smith</Name>
-      <Address>456 Elm St</Address>
-      <Email>jane.smith@example.com</Email>
-      <DateOfBirth>1990-07-20T00:00:00</DateOfBirth>
+      <CustomerId>3</CustomerId>
+      <Phone>3456789012</Phone>
+      <Name>Michael Johnson</Name>
+      <Address>789 Oak St</Address>
+      <Email>michael.johnson@example.com</Email>
+      <DateOfBirth>1978-08-25T00:00:00</DateOfBirth>
     </Customer>
   </Order>
   <Order>
@@ -23,6 +24,7 @@
     <TotalAmount>75</TotalAmount>
     <OrderDate>2024-05-01T00:00:00</OrderDate>
     <OrderNotes>There are many variations of passages of Lorem Ipsum available.</OrderNotes>
+    <Delete xsi:nil="true" />
     <Customer>
       <CustomerId>2</CustomerId>
       <Phone>2345678901</Phone>
@@ -39,6 +41,7 @@
     <TotalAmount>40</TotalAmount>
     <OrderDate>2024-05-01T00:00:00</OrderDate>
     <OrderNotes>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero</OrderNotes>
+    <Delete xsi:nil="true" />
     <Customer>
       <CustomerId>3</CustomerId>
       <Phone>3456789012</Phone>
@@ -55,6 +58,7 @@
     <TotalAmount>65</TotalAmount>
     <OrderDate>2024-05-01T00:00:00</OrderDate>
     <OrderNotes>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</OrderNotes>
+    <Delete xsi:nil="true" />
     <Customer>
       <CustomerId>4</CustomerId>
       <Phone>4567890123</Phone>
@@ -71,6 +75,7 @@
     <TotalAmount>50</TotalAmount>
     <OrderDate>2024-05-01T00:00:00</OrderDate>
     <OrderNotes>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</OrderNotes>
+    <Delete xsi:nil="true" />
     <Customer>
       <CustomerId>5</CustomerId>
       <Phone>5678901234</Phone>
@@ -87,6 +92,7 @@
     <TotalAmount>45</TotalAmount>
     <OrderDate>2024-05-01T00:00:00</OrderDate>
     <OrderNotes>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </OrderNotes>
+    <Delete xsi:nil="true" />
     <Customer>
       <CustomerId>6</CustomerId>
       <Phone>6789012345</Phone>
@@ -103,6 +109,7 @@
     <TotalAmount>0</TotalAmount>
     <OrderDate>2024-05-01T00:00:00</OrderDate>
     <OrderNotes>Contrary to popular belief, Lorem Ipsum is not simply random text</OrderNotes>
+    <Delete xsi:nil="true" />
     <Customer>
       <CustomerId>2</CustomerId>
       <Phone>2345678901</Phone>
@@ -119,6 +126,7 @@
     <TotalAmount>0</TotalAmount>
     <OrderDate>2024-05-01T00:00:00</OrderDate>
     <OrderNotes>There are many variations of passages of Lorem Ipsum available.</OrderNotes>
+    <Delete xsi:nil="true" />
     <Customer>
       <CustomerId>3</CustomerId>
       <Phone>3456789012</Phone>
@@ -135,6 +143,7 @@
     <TotalAmount>0</TotalAmount>
     <OrderDate>2024-05-01T00:00:00</OrderDate>
     <OrderNotes>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero</OrderNotes>
+    <Delete xsi:nil="true" />
     <Customer>
       <CustomerId>4</CustomerId>
       <Phone>4567890123</Phone>
@@ -151,6 +160,7 @@
     <TotalAmount>1</TotalAmount>
     <OrderDate>2024-05-31T00:00:00</OrderDate>
     <OrderNotes>1</OrderNotes>
+    <Delete xsi:nil="true" />
     <Customer>
       <CustomerId>1</CustomerId>
       <Phone>1234567890</Phone>
@@ -167,6 +177,7 @@
     <TotalAmount>1</TotalAmount>
     <OrderDate>2024-05-31T00:00:00</OrderDate>
     <OrderNotes>1fwifwfhwiowfw</OrderNotes>
+    <Delete xsi:nil="true" />
     <Customer>
       <CustomerId>1</CustomerId>
       <Phone>1234567890</Phone>
@@ -183,6 +194,7 @@
     <TotalAmount>5</TotalAmount>
     <OrderDate>2024-06-22T00:00:00</OrderDate>
     <OrderNotes>ggg</OrderNotes>
+    <Delete xsi:nil="true" />
     <Customer>
       <CustomerId>1</CustomerId>
       <Phone>1234567890</Phone>

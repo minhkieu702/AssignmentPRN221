@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositorie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf", "Wpf\Wpf.csproj", "{C72789E1-B6CC-4B88-AD20-E116AA5705D7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalROrder", "SignalROrder\SignalROrder.csproj", "{6F5CC2F5-AFA1-4846-AA33-0EC3FD0ECCFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment4_WindowsService", "Assignment4_WindowsService\Assignment4_WindowsService.csproj", "{CFF870D6-0FA5-4AC3-9FD1-FF6727C2AEBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment4_WindowsService", "Assignment4_WindowsService\Assignment4_WindowsService.csproj", "{CFF870D6-0FA5-4AC3-9FD1-FF6727C2AEBF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assigment3_SignalR", "Assigment3_SignalR\Assigment3_SignalR.csproj", "{5D587282-0332-4E0F-96E5-7FFC7CE829B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +31,14 @@ Global
 		{C72789E1-B6CC-4B88-AD20-E116AA5705D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C72789E1-B6CC-4B88-AD20-E116AA5705D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C72789E1-B6CC-4B88-AD20-E116AA5705D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F5CC2F5-AFA1-4846-AA33-0EC3FD0ECCFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F5CC2F5-AFA1-4846-AA33-0EC3FD0ECCFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F5CC2F5-AFA1-4846-AA33-0EC3FD0ECCFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F5CC2F5-AFA1-4846-AA33-0EC3FD0ECCFC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CFF870D6-0FA5-4AC3-9FD1-FF6727C2AEBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CFF870D6-0FA5-4AC3-9FD1-FF6727C2AEBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFF870D6-0FA5-4AC3-9FD1-FF6727C2AEBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFF870D6-0FA5-4AC3-9FD1-FF6727C2AEBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D587282-0332-4E0F-96E5-7FFC7CE829B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D587282-0332-4E0F-96E5-7FFC7CE829B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D587282-0332-4E0F-96E5-7FFC7CE829B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D587282-0332-4E0F-96E5-7FFC7CE829B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

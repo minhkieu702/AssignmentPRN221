@@ -1,0 +1,63 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Orders[0].Type)</th>
+            <th>@Html.DisplayNameFor(model => model.Orders[0].TotalAmount)</th>
+            <th>@Html.DisplayNameFor(model => model.Orders[0].Customer.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Orders[0].Customer.Address)</th>
+            <th>@Html.DisplayNameFor(model => model.Orders[0].Customer.DateOfBirth)</th>
+            <th>@Html.DisplayNameFor(model => model.Orders[0].Customer.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.Orders[0].OrderDate)</th>
+            <th>@Html.DisplayNameFor(model => model.Orders[0].OrderNotes)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Orders)
+        {
+            <tr data-order-id ="@item.OrderId">
+                <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                <td>@Html.DisplayFor(modelItem => item.TotalAmount)</td>
+                <td>@Html.DisplayFor(modelItem => item.Customer.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Customer.Address)</td>
+                <td>@Html.DisplayFor(modelItem => item.Customer.DateOfBirth)</td>
+                <td>@Html.DisplayFor(modelItem => item.Customer.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.OrderDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.OrderNotes)</td>
+                <td>
+                    <form method="post">
+                        <input name="orderId" value="@item.OrderId" type="hidden"/>
+                        <button type="submit" class="btn btn-danger"
+                                onclick="return confirm('Are you sure you want to delete this order?')">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="~/microsoft/signalr/dist/browser/signalr.js"></script>
+<script>
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/signalRServer").build();
+
+    connection.start().catch(function (err) {
+        return console.error(err.toString());
+    });
+
+    connection.on("OrderDeleted", function (order) {
+        console.log(`Order deleted: ${JSON.stringify(order)}`);
+
+        var row = document.querySelector(`tr[data-order-id='${order.orderId}']`);
+        if (row) {
+            row.remove();
+        }
+    });
+</script>

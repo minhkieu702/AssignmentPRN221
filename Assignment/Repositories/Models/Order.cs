@@ -20,7 +20,11 @@ namespace Data.Models
         public DateTime OrderDate { get; set; }
 
         public string? OrderNotes { get; set; }
-        public bool? Delete { get; set; }
+        public bool? Delete { get; set; } = false;
         public virtual Customer Customer { get; set; } = null!;
+        public override string ToString()
+        {
+            return OrderId + CustomerId + Type + TotalAmount + OrderDate + OrderNotes;
+        }
     }
 }
