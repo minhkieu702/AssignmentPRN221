@@ -24,5 +24,16 @@ namespace Wpf
                 MessageBox.Show($"Error initializing WebView2: {ex.Message}");
             }
         }
+        public void ClosePaymentWindow()
+        {
+            if (Dispatcher.CheckAccess())
+            {
+                this.Close();
+            }
+            else
+            {
+                Dispatcher.Invoke(() => this.Close());
+            }
+        }
     }
 }

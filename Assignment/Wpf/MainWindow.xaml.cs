@@ -33,7 +33,7 @@ NGUYEN VAN A
         private HttpListener _httpListener;
         private Thread _thread;
         private Service _service;
-
+        private wPayment _paymentWindow;
         public MainWindow()
         {
             _service ??= new();
@@ -45,21 +45,47 @@ NGUYEN VAN A
         #region CRUD
         private void LoadGrdOrders()
         {
-            var selectedComboBoxItem = cboSource.SelectedItem as ComboBoxItem;
-            var f = selectedComboBoxItem?.Content.ToString();
-
-            if (string.IsNullOrEmpty(f))
+            try
             {
-                cboSource.SelectedIndex = 0;
-                f = "Json";
-            }
-            txtDate.Text = DateTime.Now.ToString();
-            txtType.SelectedIndex = 0;
-            _service.ChangeSource(f);
-            grdOrder.ItemsSource = _service.GetAllOrders();
+                var selectedComboBoxItem = cboSource.SelectedItem as ComboBoxItem;
+                var f = selectedComboBoxItem?.Content.ToString();
 
-            string fileContent = _service.LoadTextFromFile(f);
-            txtJsonXML.Text = fileContent;
+                if (string.IsNullOrEmpty(f))
+                {
+                    cboSource.SelectedIndex = 0;
+                    f = "Json";
+                }
+                txtDate.Text = DateTime.Now.ToString();
+                txtType.SelectedIndex = 0;
+                _service.ChangeSource(f);
+                grdOrder.ItemsSource = _service.GetAllOrders();
+                LoadCboCustomer();
+                string fileContent = _service.LoadTextFromFile(f);
+                txtJsonXML.Text = fileContent;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Payment is successfully");
+            }
+        }
+        private List<KeyValuePair<int, string>> GetCustomers()
+        {
+            var customers = _service.GetAllCustomers();
+            var cboCust = new List<KeyValuePair<int, string>>();
+            customers.ForEach(c => cboCust.Add(new KeyValuePair<int, string>(c.CustomerId, $"{c.Name} - {c.Email} - {c.DateOfBirth} - {c.Address}")));
+            return cboCust;
+        }
+        private void LoadCboCustomer()
+        {
+            try
+            {
+                cboCustomer.ItemsSource = GetCustomers();
+                cboCustomer.SelectedIndex = 0;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Payment is successfully");
+            }
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -78,7 +104,7 @@ NGUYEN VAN A
                     MessageBox.Show("Successfully");
                 }
                 else MessageBox.Show("Nothing changes!");
-                LoadGrdOrders();
+                RefreshAllField();
             }
             catch (Exception ex)
             {
@@ -89,15 +115,16 @@ NGUYEN VAN A
         {
             try
             {
-                var result = _service.GetCustomer(int.Parse(txtCustomerId.Text));
-                if (result == null)
+                int customerId = (int)cboCustomer.SelectedValue;
+                var customer = _service.GetCustomer(customerId);
+                if (customer == null)
                 {
                     throw new Exception("This customer Id is not found");
                 }
                 return new Order
                 {
-                    Customer = result,
-                    CustomerId = int.Parse(txtCustomerId.Text),
+                    Customer = customer,
+                    CustomerId = customerId,
                     OrderDate = DateTime.Parse(txtDate.Text),
                     OrderId = int.Parse(txtOrderId.Text),
                     OrderNotes = txtNote.Text,
@@ -133,7 +160,7 @@ NGUYEN VAN A
 
         private void RefreshAllField()
         {
-            txtCustomerId.Text = string.Empty;
+            cboCustomer.SelectedItem = 0;
             txtDate.Text = DateTime.Now.ToString();
             txtKey.Text = string.Empty;
             txtNote.Text = string.Empty;
@@ -146,7 +173,6 @@ NGUYEN VAN A
         private void cboSource_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             RefreshAllField();
-            LoadGrdOrders();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -175,11 +201,15 @@ NGUYEN VAN A
 
                             if (result != null)
                             {
+                                var customers = GetCustomers();
                                 txtOrderId.Text = result.OrderId.ToString();
-                                txtCustomerId.Text = result.CustomerId.ToString();
+                                cboCustomer.Text = result.CustomerId.ToString();
                                 txtTotalAmount.Text = result.TotalAmount.ToString();
                                 txtNote.Text = result.OrderNotes;
                                 txtDate.SelectedDate = result.OrderDate;
+                                cboCustomer.ItemsSource = customers;
+
+                                cboCustomer.SelectedValue = result.CustomerId;
 
                                 // Select the appropriate item in the ComboBox
                                 foreach (ComboBoxItem comboBoxItem in txtType.Items)
@@ -203,7 +233,7 @@ NGUYEN VAN A
 
         private void txtCustomerId_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string s = txtCustomerId.Text;
+            string s = cboCustomer.Text;
             if (string.IsNullOrEmpty(s))
             {
                 return;
@@ -297,16 +327,15 @@ NGUYEN VAN A
                         var responseOutput = response.OutputStream;
                         responseOutput.Write(buffer, 0, buffer.Length);
                         response.Close();
-                        LoadGrdOrders();
                     }
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
         public DateTime ConvertStringToDateTime(string dateTimeString)
         {
             if (DateTime.TryParseExact(dateTimeString, "yyyyMMddHHmmss", null, System.Globalization.DateTimeStyles.None, out DateTime result))
@@ -321,8 +350,8 @@ NGUYEN VAN A
 
         private string UpdateOrder(NameValueCollection queryParams)
         {
-            var resoponseCode = queryParams.GetValues("vnp_ResponseCode");
-            if (resoponseCode[0].Equals("00"))
+            var responseCode = queryParams.GetValues("vnp_ResponseCode");
+            if (responseCode[0].Equals("00"))
             {
                 var orderInfo = queryParams.GetValues("vnp_OrderInfo")[0];
                 var orderId = orderInfo.Substring(orderInfo.IndexOf(":") + 1);
@@ -334,6 +363,14 @@ NGUYEN VAN A
                 var check = _service.SaveChange("Json");
                 if (check)
                 {
+                    Dispatcher.Invoke(() =>
+                    {
+                        if (_paymentWindow != null)
+                        {
+                            _paymentWindow.ClosePaymentWindow();
+                        }
+                        LoadGrdOrders();
+                    });
                     return "Payment is successfully";
                 }
             }
@@ -367,6 +404,7 @@ NGUYEN VAN A
                 return ex.Message;
             }
         }
+
         private void ButtonPay_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -380,8 +418,8 @@ NGUYEN VAN A
                     if (order != null)
                     {
                         string vnpUrl = CreatePaymentUrl(order);
-                        var paymentWindow = new wPayment(vnpUrl);
-                        paymentWindow.Show();
+                        _paymentWindow = new wPayment(vnpUrl);
+                        _paymentWindow.Show();
                     }
                 }
             }
@@ -390,7 +428,6 @@ NGUYEN VAN A
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
-
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {

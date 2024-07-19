@@ -27,31 +27,32 @@
                             <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="80"/>
                             <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="0" Grid.Row="0" Content="TotalAmount" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
-                        <TextBox Grid.Column="1" Grid.Row="0" x:Name="txtTotalAmount"  Height="25" Margin="5" Width="180" HorizontalAlignment="Left"/>
+                        <Label Grid.Row="0" Content="TotalAmount" HorizontalAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,0,34" Grid.RowSpan="2" Width="78" />
+                        <TextBox Grid.Column="1" Grid.Row="0" x:Name="txtTotalAmount" Margin="5,5,0,5" Width="180" HorizontalAlignment="Left"/>
 
-                        <TextBox x:Name="txtOrderId" Height="25" Text="0" Visibility="Hidden"/>
+                        <TextBox x:Name="txtOrderId" Text="0" Visibility="Hidden" Margin="0,5,0,5"/>
 
-                        <Label Grid.Column="2" Grid.Row="0" Content="Type" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
-                        <ComboBox Grid.Column="3" Grid.Row="0" HorizontalAlignment="Left" x:Name="txtType" VerticalAlignment="Top" Width="180" Height="24" Grid.RowSpan="2" Margin="5,2,0,0">
+                        <Label Grid.Column="2" Grid.Row="0" Content="Type" HorizontalAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,0,34" Grid.RowSpan="2" Width="80" />
+                        <ComboBox Grid.Column="3" HorizontalAlignment="Left" x:Name="txtType" VerticalAlignment="Center" Width="180" Height="24" Margin="5,0,0,0">
                             <ComboBoxItem Content="Direct Payment"/>
                             <ComboBoxItem Content="Online Payment"/>
                         </ComboBox>
 
-                        <Label Grid.Column="0" Grid.Row="1" Content="Note" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
-                        <TextBox Grid.Column="1" Grid.Row="1" x:Name="txtNote" Height="25" Text="" Margin="5" Width="180" HorizontalAlignment="Left"/>
+                        <Label Grid.Column="0" Grid.Row="1" Content="Note" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="0,0,0,2" Width="36" />
+                        <TextBox Grid.Column="1" Grid.Row="1" x:Name="txtNote" Text="" Margin="5,5,0,5" Width="180" HorizontalAlignment="Left"/>
 
-                        <Label Grid.Column="2" Grid.Row="1" Content="Order Date" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
-                        <DatePicker Grid.Column="3" Grid.Row="1" x:Name="txtDate" Height="25" Margin="5"  Width="180" HorizontalAlignment="Left"/>
+                        <Label Grid.Column="2" Grid.Row="1" Content="Order Date" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="0,0,0,2" Width="69" />
+                        <DatePicker Grid.Column="3" Grid.Row="1" x:Name="txtDate" Margin="5,5,0,5"  Width="180" HorizontalAlignment="Left"/>
 
-                        <Label Grid.Column="0" Grid.Row="2" Content="CustomerId" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
-                        <TextBox Grid.Column="1" Grid.Row="2" x:Name="txtCustomerId" Height="25" Margin="5,5,0,5" Width="180" HorizontalAlignment="Left" TextChanged="txtCustomerId_TextChanged"/>
-                        <Label Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="2" x:Name="lbCustomerInfo" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <Label Grid.Column="0" Grid.Row="1" Content="CustomerId" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="0,36,0,0" Grid.RowSpan="4" Width="71" />
+                        <ComboBox Grid.Column="1" Grid.Row="3" DisplayMemberPath="Value" SelectedValuePath="Key" HorizontalAlignment="Left" x:Name="cboCustomer" VerticalAlignment="Center" Width="656" Height="24" Margin="5,0,0,0" Grid.ColumnSpan="4"/>
 
-                        <ComboBox Grid.Column="4" Grid.Row="0" HorizontalAlignment="Left" x:Name="cboSource" VerticalAlignment="Top" Width="180" Height="24" Grid.RowSpan="2" Margin="5,2,0,0" SelectionChanged="cboSource_SelectionChanged">
+                        <Label Grid.Column="2" Grid.Row="1" x:Name="lbCustomerInfo" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="0,36,0,0" Grid.RowSpan="4" Width="10" />
+
+                        <ComboBox Grid.Column="4" HorizontalAlignment="Left" x:Name="cboSource" VerticalAlignment="Center" Width="180" Height="24" Margin="5,0,0,0" SelectionChanged="cboSource_SelectionChanged">
                             <ComboBoxItem Content="Json"/>
                             <ComboBoxItem Content="Xml"/>
                         </ComboBox>
