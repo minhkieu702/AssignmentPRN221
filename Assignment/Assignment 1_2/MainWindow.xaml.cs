@@ -1,11 +1,8 @@
 ﻿using Data.Models;
-using Microsoft.Extensions.Configuration;
 using Services;
 using System.Collections.Specialized;
 using System.Net;
-using System.Net.Http;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Wpf
+namespace Assignment_1_2
 {
     /*
      NCB
@@ -43,10 +40,6 @@ NGUYEN VAN A
         }
 
         #region CRUD
-        private void cboSource_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            LoadGrdOrders();
-        }
         private void LoadGrdOrders()
         {
             try
@@ -59,8 +52,8 @@ NGUYEN VAN A
                     cboSource.SelectedIndex = 0;
                     f = "Json";
                 }
-                //txtDate.Text = DateTime.Now.ToString();
-                //txtType.SelectedIndex = 0;
+                txtDate.Text = DateTime.Now.ToString();
+                txtType.SelectedIndex = 0;
                 _service.ChangeSource(f);
                 grdOrder.ItemsSource = _service.GetAllOrders();
                 LoadCboCustomer();
@@ -83,16 +76,14 @@ NGUYEN VAN A
         {
             try
             {
-                //cboCustomer.ItemsSource = GetCustomers();
-                //cboCustomer.SelectedIndex = 0;
+                cboCustomer.ItemsSource = GetCustomers();
+                cboCustomer.SelectedIndex = 0;
             }
             catch (Exception)
             {
                 MessageBox.Show("Payment is successfully");
             }
         }
-        /*
-         #region MyRegion
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
@@ -289,11 +280,10 @@ NGUYEN VAN A
                 }
             }
         }
-        #endregion
-         */
 
         private void ButtonSaveFile_Click(object sender, RoutedEventArgs e)
         {
+            RefreshAllField();
             var check = _service.SaveFile(cboSource.Text, txtJsonXML.Text);
             if (check)
             {

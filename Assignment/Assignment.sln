@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wpf", "Wpf\Wpf.csproj", "{C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment4_WindowsService", "Assignment4_WindowsService\Assignment4_WindowsService.csproj", "{CFF870D6-0FA5-4AC3-9FD1-FF6727C2AEBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assigment3_SignalR", "Assigment3_SignalR\Assigment3_SignalR.csproj", "{5D587282-0332-4E0F-96E5-7FFC7CE829B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assigment3_SignalR", "Assigment3_SignalR\Assigment3_SignalR.csproj", "{5D587282-0332-4E0F-96E5-7FFC7CE829B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,11 +1,11 @@
-﻿<Window x:Class="Wpf.MainWindow"
+﻿<Window x:Class="Assignment_1_2.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Wpf"
+        xmlns:local="clr-namespace:Assignment_1_2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="9*"/>
@@ -13,11 +13,7 @@
         </Grid.ColumnDefinitions>
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
             <StackPanel Orientation="Vertical" Margin="0,0,0,-773">
-                <ComboBox Grid.Column="4" HorizontalAlignment="Left" x:Name="cboSource" VerticalAlignment="Center" Width="180" Height="24" Margin="5,0,0,0" SelectionChanged="cboSource_SelectionChanged">
-                    <ComboBoxItem Content="Json"/>
-                    <ComboBoxItem Content="Xml"/>
-                </ComboBox>
-                <!--<GroupBox Header="Order Form" Margin="10">
+                <GroupBox Header="Order Form" Margin="10">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -56,6 +52,10 @@
 
                         <Label Grid.Column="2" Grid.Row="1" x:Name="lbCustomerInfo" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="0,36,0,0" Grid.RowSpan="4" Width="10" />
 
+                        <ComboBox Grid.Column="4" HorizontalAlignment="Left" x:Name="cboSource" VerticalAlignment="Center" Width="180" Height="24" Margin="5,0,0,0" SelectionChanged="cboSource_SelectionChanged">
+                            <ComboBoxItem Content="Json"/>
+                            <ComboBoxItem Content="Xml"/>
+                        </ComboBox>
                     </Grid>
                 </GroupBox>
                 <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
@@ -64,7 +64,7 @@
                     <Button x:Name="ButtonRefresh" Content="Refresh" Height="30" Width="80" Click="ButtonRefresh_Click"/>
                     <Button x:Name="ButtonSave" Content="Save" Height="30" Width="80" Click="ButtonSave_Click"/>
                     <Button x:Name="ButtonCancel" Content="Cancel" Height="30" Width="80" Click="ButtonCancel_Click"/>
-                </StackPanel>-->
+                </StackPanel>
                 <Grid Height="350">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -74,10 +74,9 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <DataGrid Grid.Row="0" x:Name="grdOrder" Width="auto" AutoGenerateColumns="False" ItemsSource="{Binding Orders}" CanUserAddRows="False" Margin="10">
-                        <!--MouseDoubleClick="grdOrder_MouseDoubleClick"--><!-- SelectionMode="Single" SelectionUnit="FullRow">-->
+                    <DataGrid Grid.Row="0" x:Name="grdOrder" Width="auto" AutoGenerateColumns="False" ItemsSource="{Binding Orders}" CanUserAddRows="False" Margin="10" MouseDoubleClick="grdOrder_MouseDoubleClick" SelectionMode="Single" SelectionUnit="FullRow">
                         <DataGrid.Columns>
-                            <!--<DataGridTemplateColumn>
+                            <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button Content="X" x:Name="ButtonDelete" CommandParameter="{Binding Path=OrderId}" Click="ButtonDelete_Click"/>
@@ -90,7 +89,7 @@
                                         <Button Content="Pay" x:Name="ButtonPay" CommandParameter="{Binding Path=OrderId}" Click="ButtonPay_Click"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>-->
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn Header="Code" Binding="{Binding Path=OrderId}" Visibility="Hidden" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Customer" Binding="{Binding Path=Customer.Name}" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}" IsReadOnly="True"/>
@@ -106,7 +105,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Row="0" Grid.Column="0" x:Name="txtJsonXML" Height="500" Margin="10"  AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" />
+                    <TextBox Grid.Row="0" Grid.Column="0" x:Name="txtJsonXML" Height="500" Margin="10" TextWrapping="WrapWithOverflow"/>
                 </Grid>
                 <ComboBox HorizontalAlignment="Left" Height="0" Margin="722,526,0,0" VerticalAlignment="Top" Width="120"/>
             </StackPanel>
